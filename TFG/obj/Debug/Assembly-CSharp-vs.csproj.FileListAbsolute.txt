@@ -1,0 +1,12 @@
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Joshua\Documents\TFG\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Joshua\Documents\TFG\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Joshua\Documents\TFG\obj\Debug\Assembly-CSharp.dll
+C:\Users\Joshua\Documents\TFG\obj\Debug\Assembly-CSharp.pdb
