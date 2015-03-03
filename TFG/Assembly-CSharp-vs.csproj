@@ -58,6 +58,12 @@
      <Compile Include="Assets\Scripts\Gun\Weapon.cs" />
      <Compile Include="Assets\Scripts\Utils\FPSDisplay.cs" />
      <Compile Include="Assets\Scripts\wiiMote.cs" />
+     <None Include="Assets\Shaders\DoubleSidedTransparentCutoutBumpedSpecular.shader" />
+     <None Include="Assets\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Shaders\HighlightShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
