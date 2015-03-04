@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Gun\HandGun.cs" />
      <Compile Include="Assets\Scripts\Gun\Weapon.cs" />
      <Compile Include="Assets\Scripts\Utils\FPSDisplay.cs" />
+     <Compile Include="Assets\Scripts\Utils\MusicController.cs" />
      <Compile Include="Assets\Scripts\wiiMote.cs" />
      <None Include="Assets\Shaders\DoubleSidedTransparentCutoutBumpedSpecular.shader" />
      <None Include="Assets\Shaders\Toony-BasicOutline.shader" />
