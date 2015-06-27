@@ -20,3 +20,9 @@ Mac OS X:
 * [Zombie_Assault_PC](https://mega.co.nz/#!ChREFZyS!w3Q-Xa9ZeYe20xcmaZJcMOlcPCOhq73QApRLVkfYkGU)
 * [Zombie_Assault_PS3](https://mega.co.nz/#!P9BzjKTK!hMBIZIRLTJsfKvvT2ty-9_fEe3m8Hmzwja81MbIsFwI)
 * [Zombie_Assault_WiiMote](https://mega.co.nz/#!e8hEUIqY!LEXebQmf2aIG96IH7qahJydt33jt5WYvhMODHLc4kys)
+
+
+*** The models of the game has been remove because the use is only educational. 
+If you want download: 
+* http://blog.mixamo.com/featured/zombiewinners
+* http://3drt.com/store/characters/zombie-dogs.html
