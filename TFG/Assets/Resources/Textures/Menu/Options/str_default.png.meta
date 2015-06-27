@@ -1,0 +1,80 @@
+fileFormatVersion: 2
+guid: 3ca65cd4b2a477548aa1cc6d9e533fda
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "str_default_sp\u3042\u306A\u305F\u304C\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u305F\u3044\u3067\u3059"
+    21300002: str_default_en
+    21300004: str_default_jp
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: "str_default_sp\u3042\u306A\u305F\u304C\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u305F\u3044\u3067\u3059"
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 758
+        width: 509
+        height: 302
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: str_default_en
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 395
+        width: 504
+        height: 312
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: str_default_jp
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 56
+        width: 549
+        height: 292
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

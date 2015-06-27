@@ -21,224 +21,238 @@ User locale: es-ES
 System locale: es-ES
 
 Running processes:
-TouchControl.exe (2036)
+TouchControl.exe (3068)
     path: C:\Program Files (x86)\HP SimplePass 2011\TouchControl.exe
     company:  HP
     product:  Simple Pass 2011
     filedesc: TouchControl
     filever:  5.1.0.495
     prodver:  5.1.0.495
-BioMonitor.exe (1328)
+BioMonitor.exe (3376)
     path: C:\Program Files (x86)\HP SimplePass 2011\BioMonitor.exe
     company:  HP
     product:  Simple Pass 2011
     filedesc: BioMonitor
     filever:  5.1.0.495
     prodver:  5.1.0.495
-mbamgui.exe (3424)
+mbamgui.exe (3816)
     path: C:\Program Files (x86)\Malwarebytes' Anti-Malware\mbamgui.exe
     company:  Malwarebytes Corporation
     product:  Malwarebytes Anti-Malware
     filedesc: Malwarebytes Anti-Malware
     filever:  1.70.0.0
     prodver:  1.70.0.0
-YCMMirage.exe (4132)
+YCMMirage.exe (872)
     path: C:\Program Files (x86)\CyberLink\YouCam\YCMMirage.exe
     company:  CyberLink
     product:  YCMMirag Application
     filedesc: YouCam Mirage
     filever:  1.0.0.526
     prodver:  1.0.0.526
-IAStorIcon.exe (5392)
+IAStorIcon.exe (5408)
     path: C:\Program Files (x86)\Intel\Intel(R) Rapid Storage Technology\IAStorIcon.exe
     company:  Intel Corporation
     product:  IAStorIcon
     filedesc: IAStorIcon
     filever:  10.1.2.1004
     prodver:  10.1.2.1004
-nusb3mon.exe (5476)
+nusb3mon.exe (5956)
     path: C:\Program Files (x86)\Renesas Electronics\USB 3.0 Host Controller Driver\Application\nusb3mon.exe
     company:  Renesas Electronics Corporation
     product:  USB 3.0 Monitor
     filedesc: USB 3.0 Monitor
     filever:  2.0.28.0
     prodver:  2.0.28.0
-HPMSGSVC.exe (5884)
+HPMSGSVC.exe (5584)
     path: C:\Program Files (x86)\Hewlett-Packard\HP Quick Launch\HPMSGSVC.exe
     company:  Hewlett-Packard Development Company, L.P.
     product:  HP Quick Launch
     filedesc: HP Message Service
     filever:  2.3.6.0
     prodver:  2.3.6.0
-TosBtMng.exe (5924)
-    path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosBtMng.exe
-    company:  TOSHIBA CORPORATION.
-    product:  Bluetooth Stack for Windows by TOSHIBA
-    filedesc: Bluetooth Manager
-    filever:  8.0.0.15
-    prodver:  8.0.0.0
-HPOSD.exe (6116)
+HPOSD.exe (5764)
     path: C:\Program Files (x86)\Hewlett-Packard\HP On Screen Display\HPOSD.exe
     company:  Hewlett-Packard Development Company, L.P.
     product:  HP On Screen Display
     filedesc: HP On Screen Display
     filever:  1.1.1.0
     prodver:  1.1.1.0
-iTunesHelper.exe (5716)
-    path: C:\Program Files (x86)\iTunes\iTunesHelper.exe
-    company:  Apple Inc.
-    product:  iTunes
-    filedesc: iTunesHelper
-    filever:  10.6.1.7
-    prodver:  10.6.1.7
-EuWatch.exe (5936)
-    path: C:\Program Files (x86)\EASEUS\Todo Backup\bin\EuWatch.exe
-    company:  CHENGDU YIWO Tech Development Co., Ltd
-    product:  EaseUS Todo Backup
-    filedesc: EaseUS Todo Backup Application
-    filever:  3.0.0.1
-    prodver:  3.0.0.1
-hpwuSchd2.exe (5412)
-    path: C:\Program Files (x86)\HP\HP Software Update\hpwuSchd2.exe
-    company:  Hewlett-Packard
-    product:   hpwuSchd Application
-    filedesc: hpwuSchd Application
-    filever:  80.1.0.0
-    prodver:  80.1.0.0
-WSHelper.exe (6132)
-    path: C:\Program Files (x86)\Common Files\Wondershare\Wondershare Helper Compact\WSHelper.exe
-    company:  Wondershare
-    product:  Wondershare Studio
-    filedesc: Wondershare Studio
-    filever:  2.1.7.1
-    prodver:  2.1.7.1
-vmware-tray.exe (5384)
-    path: C:\Program Files (x86)\VMware\VMware Workstation\vmware-tray.exe
-    company:  VMware, Inc.
-    product:  VMware Workstation
-    filedesc: VMware Tray Process
-    filever:  11.0.0.54843
-    prodver:  11.0.0.54843
-TosA2dp.exe (6512)
+TosBtMng.exe (5300)
+    path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosBtMng.exe
+    company:  TOSHIBA CORPORATION.
+    product:  Bluetooth Stack for Windows by TOSHIBA
+    filedesc: Bluetooth Manager
+    filever:  8.0.0.15
+    prodver:  8.0.0.0
+TosA2dp.exe (6012)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosA2dp.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by TOSHIBA
     filedesc: TosA2DP
     filever:  8.0.0.0
     prodver:  8.0.0.0
-TosBtHid.exe (6956)
+TosBtHid.exe (4884)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosBtHid.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by TOSHIBA
     filedesc: TosBtHid
     filever:  8.0.0.0
     prodver:  8.0.0.0
-TosBtHsp.exe (7116)
+TosBtHsp.exe (5604)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosBtHsp.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by Toshiba
     filedesc: TosBtHSP
     filever:  8.0.0.0
     prodver:  8.0.0.0
-BtAssist.exe (6784)
+BtAssist.exe (140)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\BtAssist.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by TOSHIBA
     filedesc: Bluetooth Assistant
     filever:  1.0.0.23
     prodver:  7.0.0.0
-TosAVRC.exe (6708)
+TosAVRC.exe (1360)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosAVRC.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by TOSHIBA
     filedesc: TosAVRC
     filever:  6.40.0.2
     prodver:  6.40.0.0
-TosBtBty.exe (6616)
+TosBtBty.exe (7056)
     path: C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\TosBtBty.exe
     company:  TOSHIBA CORPORATION.
     product:  Bluetooth Stack for Windows by TOSHIBA
     filedesc: TosBtBty
     filever:  6.2.0.1
     prodver:  6.2.0.1
-AdAppMgr.exe (6560)
-    path: C:\Users\Joshua\AppData\Local\Autodesk\.AdskAppManager\R1\AdAppMgr.exe
-    company:  Autodesk Inc.
-    product:  Autodesk Application Manager
-    filedesc: Autodesk Application Manager
-    filever:  3.0.155.0
-    prodver:  3.0.155.0
-chrome.exe (8492)
+chrome.exe (2708)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  40.0.2214.115
-    prodver:  40.0.2214.115
-chrome.exe (1308)
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (6080)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  40.0.2214.115
-    prodver:  40.0.2214.115
-chrome.exe (5424)
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (2776)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  40.0.2214.115
-    prodver:  40.0.2214.115
-chrome.exe (8124)
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (5780)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  40.0.2214.115
-    prodver:  40.0.2214.115
-chrome.exe (8576)
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (6736)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  40.0.2214.115
-    prodver:  40.0.2214.115
-devenv.exe (4312)
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (7540)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (8148)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+devenv.exe (1616)
     path: C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
     company:  Microsoft Corporation
     product:  Microsoft® Visual Studio® 2013
     filedesc: Microsoft Visual Studio 2013
     filever:  12.0.21005.1
     prodver:  12.0.21005.1
-Microsoft.Alm.Shared.Remoting.RemoteContainer.dll (9684)
-    path: C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Alm.Shared.Remoting.RemoteContainer\v4.0_12.0.0.0__b03f5f7f11d50a3a\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    company:  Microsoft Corporation
-    product:  Microsoft® Visual Studio® 2013
-    filedesc: Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    filever:  12.0.21005.1
-    prodver:  12.0.21005.1
-cmd.exe (10048)
+chrome.exe (7424)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (1196)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (7332)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (6680)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+cmd.exe (7584)
     path: C:\Windows\SysWOW64\cmd.exe
     company:  Microsoft Corporation
     product:  Sistema operativo Microsoft® Windows®
     filedesc: Procesador de comandos de Windows
     filever:  6.1.7601.17514
     prodver:  6.1.7601.17514
-netsession_win.exe (504)
+netsession_win.exe (1248)
     path: C:\Users\Joshua\AppData\Local\Akamai\netsession_win.exe
     company:  Akamai Technologies, Inc.
     product:  Akamai NetSession Client
     filedesc: Akamai NetSession Client
     filever:  1.9.1.1
     prodver:  1.9.1.1
-netsession_win.exe (8140)
+netsession_win.exe (8476)
     path: C:\Users\Joshua\AppData\Local\Akamai\netsession_win.exe
     company:  Akamai Technologies, Inc.
     product:  Akamai NetSession Client
     filedesc: Akamai NetSession Client
     filever:  1.9.1.1
     prodver:  1.9.1.1
-UnityBugReporter.exe (9252)
+chrome.exe (7480)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (9152)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+chrome.exe (9880)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  43.0.2357.124
+    prodver:  43.0.2357.124
+UnityBugReporter.exe (9392)
     path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
     company:  Unity Technologies ApS
     product:  Unity Bug Reporter

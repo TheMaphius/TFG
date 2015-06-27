@@ -6,122 +6,330 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-public class WiimoteController : MonoBehaviour {
+public class WiimoteController : Controller {
+
+    [Tooltip("Name of first weapon.")]
+    public string firstWeapon;
+    [Tooltip("Name of second weapon.")]
+    public string secondWeapon;
+    [Tooltip("sensibility of controller.")]
+    public int sensibility;
+    [Tooltip("Controller number.")]
+    public int joystick;
+
+    private GameObject obj;
+
+    private Engine engine;
+    private PauseEngine pause;
+    private GameOverEngine gameover;
+    private SelectPathEngine path;
+    private AreaClearEngine clear;
 
     private Wiimote wiimote;
+    private string controller;
 
-    private byte player;
+    //private int accuracy = 5;
 
     private bool isAvailable;
     private bool isNunchuck;
+    private bool isIR;
 
-    //private Rect target_box;
-    //public Texture2D targetTexture;
-    private RectTransform target_box;
-    private Image targetTexture;
+    private Image pointer;
+    private int widthPointer;
+    private int heightPointer;
 
-    private int width;
-    private int height;
+    private string weapon;
+    private Weapon firstGun;
+    private Weapon secondGun;
+    //private bool shoot = false; <-- Echar un ojo
+
+    //private GameObject reload;
+
+    //private GameObject[] avatar;
+    private GameObject avatar;
+    private AvatarController ac;
+    private Animation anim;
+    private List<string> anim_action;
 
     private Transform _transform;
-    private int accuracy = 5;
 
-    private bool shoot = false;
-    private bool grenade = false;
-    private bool adjust = false;
+    // Events states
+    private bool pressedUp = false;
+    private bool pressedDown = false;
+    private bool isShoot = false;
+    private bool isReload = false;
+    private bool isGrenade = false;
+    private bool isAdjust = false;
+    private bool change_weapon = false;
+    private bool isPaused = false;
+    private bool GamePause = false;
 
-    //
-    // Event Messages
-    //
-
-    /*void Awake()
+    /// <summary>
+    /// Load the 'Engine' scene and get the controller and assign the weapons to the player.
+    /// </summary>
+    void Awake()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 70;        
-    }*/
+        //QualitySettings.vSyncCount = 0;
+        //Application.targetFrameRate = 70;    
+        
+        obj = GameObject.FindGameObjectWithTag("Engine");
+        engine = obj.GetComponent<Engine>();
+        pause = obj.GetComponent<PauseEngine>();
+        gameover = obj.GetComponent<GameOverEngine>();
+        path = obj.GetComponent<SelectPathEngine>();
+        clear = obj.GetComponent<AreaClearEngine>();
+    }
 
     // Use this for initialization
     void Start()
     {
         
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 70;
-        connectWiimote();
+        Screen.showCursor = false;
+
+        controller = (joystick + 1) + "P";
+        engine.setActivePlayers(1);
+        setPlayer(controller);
+
+        pointer = gameObject.GetComponent<Image>();
+        pointer.color = (this.controller == "1P") ? new Color(.651f, 0, 0) : new Color(0, 0, .651f);
+
+        widthPointer = GetComponent<Image>().mainTexture.width;
+        heightPointer = GetComponent<Image>().mainTexture.height;
+
+        this.avatar = GameObject.FindGameObjectWithTag("Avatar_" + controller);
+
+        ac = avatar.GetComponent<AvatarController>();
+        ac.setPlayer(controller);
+        ac.setLifeBar(controller);
+
+        this.addWeapon(firstWeapon, secondWeapon);
+        weapon = firstWeapon;
+
+        this.anim = avatar.GetComponent<Animation>();
+        this.anim_action = new List<string>();
+
+        foreach (AnimationState action in anim)
+            anim_action.Add(action.name);
+
+        anim[anim_action[0]].speed = firstGun.reload_speed;
+        anim[anim_action[1]].speed = secondGun.reload_speed;
+
+        gameObject.AddComponent<AudioSource>();
+        _transform = transform;
+
         wiimote = new Wiimote();
         wiimote.connectWiimote();
-        this.addPlayer();
-        this.targetTexture = GetComponent<Image>();
-        this.width = targetTexture.mainTexture.width;
-        this.height = targetTexture.mainTexture.height;
-
-        this.target_box = GetComponent<RectTransform>();
-        this.target_box.position = new Vector3(Screen.width, Screen.height, 0);
-        //this.target_box.position = new Vector3(-1*((Screen.width * .5f) - (widht * .5f)), -1*((Screen.height * .5f) - (heigth * .5f)));
-        this.target_box.sizeDelta = new Vector2(width, height);
-        this.target_box.anchorMin = new Vector2(0, 0);
-        this.target_box.anchorMax = new Vector2(0, 0);
-        this.target_box.pivot = new Vector2(.5f, .5f);
-
-        _transform = this.target_box;
-        //this.isAvailable = wiimote.isWiimoteAvailable(player);
-        //this.isNunchack = wiimote.isWiimoteNunchack(player);
-
-        /*this.target_box = new Rect(Screen.width * .5f - this.targetTexture.width * .5f,
-            Screen.height * .5f - this.targetTexture.height * .5f,
-            this.targetTexture.width,
-            this.targetTexture.height);*/
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
+    void Update()
+    {
         Controller();
-        Debug.Log("Sensor X: " + wiimote.getWiiMoteIRX(player) + " Sensor Y: " + wiimote.getWiiMoteIRY(player));
-        
     }
 
 
 
     void Controller()
     {
+        bool isClear = clear.getClear();
+        bool isPause = pause.getPause();
+        bool isAlive = gameover.getPlayerAlive(controller);
+        bool isGameOver = gameover.getPlayerGameOver(controller);
+        bool isSelectPath = (path != null) ? path.isSelection() : false;
 
-        this.isAvailable = wiimote.isWiimoteAvailable(player);
-        this.isNunchuck = wiimote.isWiimoteNunchuck(player);
+        this.isAvailable = wiimote.isWiimoteAvailable(joystick);
+        this.isNunchuck = wiimote.isWiimoteNunchuck(joystick);
+        this.isIR = wiimote.isIREnabled(joystick);
 
         if (isAvailable)
         {
-            if (!isNunchuck) 
-            { 
-                DPad();
+            if (isIR)
+            {
+                directionIR();
+            }
+            else if (isNunchuck) 
+            {
+                Stick();
             }
             else 
             {
                 //DPad();
                 //Accelerometer();
-                Stick();
-                //directionIR();
+                DPad();
+                
             }
 
-            if (wiimote.pressedWiimoteButtonB(player) || wiimote.pressedNunchuckButtonZ(player))
-                Shoot();
-            else shoot = false;
 
-            if (wiimote.pressedWiimoteButtonA(player) || wiimote.pressedNunchuckButtonC(player))
-                Grenade();
-            else grenade = false;
+            if (!isClear && !isPause && isAlive && !isSelectPath)
+            {
 
-            if (wiimote.pressedWiimoteButtonMinus(player))
-                AdjustAccuracy(-1);
-            else if (wiimote.pressedWiimoteButtonPlus(player))
-                AdjustAccuracy(1);
-            else adjust = false;
+                /**************************************************************/
+                /****                    B  --> SHOOT                     *****/
+                /**************************************************************/
 
-            Reload();
+                // Event B pressed and released. Used to throw a grenade.
+                if (!isShoot && weapon.Equals("SMG") && (wiimote.pressedWiimoteButtonB(joystick) || wiimote.pressedNunchuckButtonZ(joystick)))
+                {
+                    Shoot();
+                    secondGun.weaponFire(_transform.position);
+                    StartCoroutine(Delay(getWeapon().shoot_speed));
+                }
+                else if ((wiimote.pressedWiimoteButtonB(joystick) || wiimote.pressedNunchuckButtonZ(joystick)))
+                {
+                    if (!isShoot)
+                    {
+                        //Do something
+                        //gun.weaponFire(_transform.position);
+                        if (firstGun.enabled)
+                            firstGun.weaponFire(_transform.position);
+                        else if (secondGun.enabled)
+                            secondGun.weaponFire(_transform.position);
+
+                        Debug.Log("Shoot!!!");
+                        Shoot();
+                    }
+                }
+                else if ((!wiimote.pressedWiimoteButtonB(joystick) && !wiimote.pressedNunchuckButtonZ(joystick)))
+                    isShoot = false;
+
+                /*if (wiimote.pressedWiimoteButtonB(joystick) || wiimote.pressedNunchuckButtonZ(joystick))
+                    Shoot();
+                else isShoot = false;*/
+
+                /**************************************************************/
+                /****                    A  --> GRENADE                   *****/
+                /**************************************************************/
+
+                // Event Button A pressed and released. Used to shoot weapon.
+                if (wiimote.pressedWiimoteButtonA(joystick) || wiimote.pressedNunchuckButtonC(joystick))
+                    Grenade();
+                else isGrenade = false;
+
+                /**************************************************************/
+                /****               '+' or '-' --> ADJUST                 *****/
+                /**************************************************************/
+
+                // Adjust Sensibility Dpad
+                if (wiimote.pressedWiimoteButtonMinus(joystick))
+                    AdjustAccuracy(-1);
+                else if (wiimote.pressedWiimoteButtonPlus(joystick))
+                    AdjustAccuracy(1);
+                else isAdjust = false;
+
+                Reload();
+
+
+                /**************************************************************/
+                /****               1 --> CHANGE WEAPON                  *****/
+                /**************************************************************/
+                
+                // Event Button 1 pressed and released. Used to shoot weapon.
+                if (wiimote.pressedWiimoteButton1(joystick))
+                {
+                    if (!change_weapon)
+                    {
+                        //Do something
+                        switchWeapon();
+                        Debug.Log("Change Weapon!!!");
+                        change_weapon = true;
+                    }
+                }
+                else if (!wiimote.pressedWiimoteButton1(joystick))
+                    change_weapon = false;
+
+
+                /**************************************************************/
+                /****                    R1 --> SHOOT                     *****/
+                /**************************************************************/
+
+                // Event R1 pressed and released. Used to throw a grenade.
+               /* if (!isShoot && weapon.Equals("SMG") && ps3.isPS3R1(controller_id))
+                {
+                    isShoot = true;
+                    secondGun.weaponFire(_transform.position);
+                    StartCoroutine(Delay(getWeapon().shoot_speed));
+                }
+                else if (ps3.isPS3R1(controller_id))
+                {
+                    if (!isShoot)
+                    {
+                        //Do something
+                        //gun.weaponFire(_transform.position);
+                        if (firstGun.enabled)
+                            firstGun.weaponFire(_transform.position);
+                        else if (secondGun.enabled)
+                            secondGun.weaponFire(_transform.position);
+
+                        Debug.Log("Shoot!!!");
+                        isShoot = true;
+                    }
+                }
+                else if (!ps3.isPS3R1(controller_id))
+                    isShoot = false;*/
+
+
+                
+            }
+            else
+            {
+                if ((wiimote.pressedWiimoteButtonB(joystick) || wiimote.pressedNunchuckButtonZ(joystick)))
+                {
+                    if (!isShoot)
+                    {
+                        isShoot = true;
+                        PointerEventData pointer = new PointerEventData(EventSystem.current);
+                        pointer.position = _transform.position;
+
+                        List<RaycastResult> raycastResults = new List<RaycastResult>();
+
+                        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+                        if (raycastResults.Count > 0)
+                        {
+                            for (int i = 0; i < raycastResults.Count; i++)
+                            {
+                                string option = raycastResults[i].gameObject.transform.name;
+                                Options op = raycastResults[i].gameObject.GetComponent<Options>();
+                                if (op != null)
+                                    if (!isSelectPath)
+                                        op.ExecuteOption(controller, option);
+                                    else
+                                        op.ExecuteOptionPath(option);
+                            }
+                        }
+                    }
+                }
+                else if (!(wiimote.pressedWiimoteButtonB(joystick) || wiimote.pressedNunchuckButtonZ(joystick)))
+                    isShoot = false;
+            }
             
         }
+
+        /**************************************************************/
+        /****                  START --> PAUSE                    *****/
+        /**************************************************************/
+
+        // Event ButtonL2 pressed and released. Used to shoot weapon.
+        if (wiimote.pressedWiimoteButtonHome(joystick))
+        {
+            if (!isPaused)
+            {
+                if (!isGameOver && !isAlive)
+                    gameover.Continue(controller);
+                else if (!isGameOver)
+                    pause.setPause(controller);
+
+                Debug.Log("PAUSE GAME!!!");
+                isPaused = true;
+            }
+        }
+        else if (!wiimote.pressedWiimoteButtonHome(joystick))
+            isPaused = false;
 
     }
 
@@ -144,17 +352,17 @@ public class WiimoteController : MonoBehaviour {
         float x = _transform.position.x;
         float y = _transform.position.y;
 
-        if (wiimote.pressedWiimoteLeft(player))
-            x = Mathf.Clamp(_transform.position.x - (accuracy * 5), 0, Screen.width + (width * -.5f));
+        if (wiimote.pressedWiimoteLeft(joystick))
+            x = Mathf.Clamp(_transform.position.x - (sensibility * 5), 0, Screen.width + (widthPointer * -.5f));
 
-        else if (wiimote.pressedWiimoteRight(player))
-            x = Mathf.Clamp(_transform.position.x + (accuracy * 5), 0, Screen.width);
+        else if (wiimote.pressedWiimoteRight(joystick))
+            x = Mathf.Clamp(_transform.position.x + (sensibility * 5), 0, Screen.width);
 
-        if (wiimote.pressedWiimoteUp(player))
-            y = Mathf.Clamp(_transform.position.y + (accuracy * 5), (height * -.5f), Screen.height);
-        
-        else if (wiimote.pressedWiimoteDown(player))
-            y = Mathf.Clamp(_transform.position.y - (accuracy * 5), 0, Screen.height);
+        if (wiimote.pressedWiimoteUp(joystick))
+            y = Mathf.Clamp(_transform.position.y + (sensibility * 5), (heightPointer * -.5f), Screen.height);
+
+        else if (wiimote.pressedWiimoteDown(joystick))
+            y = Mathf.Clamp(_transform.position.y - (sensibility * 5), 0, Screen.height);
 
         _transform.position = new Vector3(x, y, 0);
 
@@ -180,50 +388,37 @@ public class WiimoteController : MonoBehaviour {
         float x = _transform.position.x;
         float y = _transform.position.y;
 
-        if (wiimote.getWiimoteNunchuckX(player) <= 120)
-            x = Mathf.Clamp(_transform.position.x - (accuracy * 5), 0, Screen.width + (width * -.5f));
+        if (wiimote.getWiimoteNunchuckX(joystick) <= 120)
+            x = Mathf.Clamp(_transform.position.x - (sensibility * 5), 0, Screen.width + (widthPointer * -.5f));
 
-        else if (wiimote.getWiimoteNunchuckX(player) >= 150)
-            x = Mathf.Clamp(_transform.position.x + (accuracy * 5), 0, Screen.width);
+        else if (wiimote.getWiimoteNunchuckX(joystick) >= 150)
+            x = Mathf.Clamp(_transform.position.x + (sensibility * 5), 0, Screen.width);
 
-        if (wiimote.getWiimoteNunchuckY(player) <= 120)
-            y = Mathf.Clamp(_transform.position.y - (accuracy * 5), 0, Screen.height);
+        if (wiimote.getWiimoteNunchuckY(joystick) <= 120)
+            y = Mathf.Clamp(_transform.position.y - (sensibility * 5), 0, Screen.height);
 
-        else if (wiimote.getWiimoteNunchuckY(player) >= 145)
-            y = Mathf.Clamp(_transform.position.y + (accuracy * 5), 0, Screen.height);
+        else if (wiimote.getWiimoteNunchuckY(joystick) >= 145)
+            y = Mathf.Clamp(_transform.position.y + (sensibility * 5), 0, Screen.height);
 
         _transform.position = new Vector3(x, y, 0);
     }
 
     private void Accelerometer()
     {
-        //print("Roll: " + wiimote.getWiimoteRoll(player));
-        /*if (wiimote.getWiimoteRoll(player) <= -10)
-            this.target_box.x = Mathf.Clamp(this.target_box.x - sensibility, (this.targetTexture.width * -.5f), Screen.width);
-        else if (wiimote.getWiimoteRoll(player) >= 10)
-            this.target_box.x = Mathf.Clamp(this.target_box.x + sensibility, 0, Screen.width - (this.targetTexture.width * .5f));
-
-
-        if (wiimote.getWiimotePitch(player) < -5)
-            this.target_box.y = Mathf.Clamp(this.target_box.y - sensibility, (this.targetTexture.height * -.5f), Screen.height + (this.targetTexture.height * -.5f));
-        else if (wiimote.getWiimotePitch(player) > 5)
-            this.target_box.y = Mathf.Clamp(this.target_box.y + sensibility, (this.targetTexture.height * -.5f), Screen.height + (this.targetTexture.height * -.5f));
-        */
-
         float x = _transform.position.x;
         float y = _transform.position.y;
 
-        if (wiimote.getWiimoteRoll(player) <= -10)
-            x = Mathf.Clamp(_transform.position.x - (accuracy * 5), 0, Screen.width + (width * -.5f));
+        if (wiimote.getWiimoteRoll(joystick) <= -10)
+            x = Mathf.Clamp(_transform.position.x - (sensibility * 5), 0, Screen.width + (widthPointer * -.5f));
 
-        else if (wiimote.getWiimoteRoll(player) >= 10)
-            x = Mathf.Clamp(_transform.position.x + (accuracy * 5), 0, Screen.width);
+        else if (wiimote.getWiimoteRoll(joystick) >= 10)
+            x = Mathf.Clamp(_transform.position.x + (sensibility * 5), 0, Screen.width);
 
-        if (wiimote.getWiimotePitch(player) <= -5)
-            y = Mathf.Clamp(_transform.position.y + (accuracy * 5), 0, Screen.height);
+        if (wiimote.getWiimotePitch(joystick) <= -5)
+            y = Mathf.Clamp(_transform.position.y + (sensibility * 5), 0, Screen.height);
 
-        else if (wiimote.getWiimotePitch(player) >= 5)
-            y = Mathf.Clamp(_transform.position.y - (accuracy * 5), 0, Screen.height);
+        else if (wiimote.getWiimotePitch(joystick) >= 5)
+            y = Mathf.Clamp(_transform.position.y - (sensibility * 5), 0, Screen.height);
 
         _transform.position = new Vector3(x, y, 0);
     }
@@ -233,14 +428,14 @@ public class WiimoteController : MonoBehaviour {
         float x = _transform.position.x;
         float y = _transform.position.y;
 
-        float irX = wiimote.getWiiMoteIRX(player);
-        float irY = wiimote.getWiiMoteIRY(player);
+        float irX = wiimote.getWiiMoteIRX(joystick);
+        float irY = wiimote.getWiiMoteIRY(joystick);
         
         if( irX != -100)
-            x = Mathf.Clamp((wiimote.getWiiMoteIRX(player) * Screen.width * .5f) + Screen.width * .5f, 0, Screen.width);
+            x = Mathf.Clamp((wiimote.getWiiMoteIRX(joystick) * Screen.width * .5f) + Screen.width * .5f, 0, Screen.width);
         
         if(irY != -100)
-            y = Mathf.Clamp((wiimote.getWiiMoteIRY(player) * Screen.height * .5f) + Screen.height * .5f, 0, Screen.height);
+            y = Mathf.Clamp((wiimote.getWiiMoteIRY(joystick) * Screen.height * .5f) + Screen.height * .5f, 0, Screen.height);
 
         _transform.position = new Vector3(x, y, 0);
 
@@ -249,10 +444,10 @@ public class WiimoteController : MonoBehaviour {
     // Call method Shoot into the screen.
     private void Shoot()
     {
-        if (!shoot)
+        if (!isShoot)
         {
-            shoot = true;
-            wiimote.shakeWiimote(player, 0.075f);
+            isShoot = true;
+            wiimote.shakeWiimote(joystick, 0.075f);
             print("Shoot");
         }
     }
@@ -260,9 +455,9 @@ public class WiimoteController : MonoBehaviour {
     // Call method throw Grenade.
     private void Grenade()
     {
-        if (!grenade)
+        if (!isGrenade)
         {
-            grenade = true;
+            isGrenade = true;
             print("Throw grenade");
         }
         
@@ -271,15 +466,15 @@ public class WiimoteController : MonoBehaviour {
     private void AdjustAccuracy(int i) 
     {
 
-        if (!adjust)
+        if (!isAdjust)
         {
-            if (i < 0 && (accuracy + i) != 0)
-                accuracy--;
-            else if (i > 0 && (accuracy + i) != 11)
-                accuracy++;
+            if (i < 0 && (sensibility + i) != 0)
+                sensibility--;
+            else if (i > 0 && (sensibility + i) != 11)
+                sensibility++;
 
-            adjust = true;
-            print("Accuracy: " + accuracy);
+            isAdjust = true;
+            print("Accuracy: " + sensibility);
         }
     }
 
@@ -288,59 +483,174 @@ public class WiimoteController : MonoBehaviour {
     // Call method 'Reload' bullets.
     private void Reload()
     {
-        //min = Mathf.Min(min, wiimote.getWiimoteAccelerometer(player).x);
-        //max = Mathf.Max(max, wiimote.getWiimoteAccelerometer(player).x);
-        //print("min: " + min + " max:" + max);
-        //print("X: " + wiimote.getWiimoteAccelerometer(player).x);
-        byte reload = (byte)wiimote.getWiimoteAccelerometer(player).y;
-        if (reload >= 200)
+        byte reload = (byte)wiimote.getWiimoteAccelerometer(joystick).y;
+
+        if (reload >= 175)
         {
+            if (!isReload)
+            {
+                //Do something
+                if (firstGun.enabled)
+                {
+                    firstGun.setReload(true);
+                    anim.Play(anim_action[0]);
+                }
+                else if (secondGun.enabled)
+                {
+                    secondGun.setReload(true);
+                    anim.Play(anim_action[1]);
+                }
+
+                //gun.weaponReload(true);
+                Debug.Log("Reload!!!");
+                isReload = true;
+                StartCoroutine(Reload(1));
+            }
             print("Reload: " + reload);
         }
     }
 
-    // Assign player to controller.
-    private void addPlayer() 
-    {
 
-        if (wiimote.getCountWiimotes() != 0)
+    /// <summary>
+    /// Assign the weapons player.
+    /// </summary>
+    /// <param name="firstWeapon">Name of the first weapon</param>
+    /// <param name="secondWeapon">Name of the second weapon</param>
+    void addWeapon(string firstWeapon, string secondWeapon)
+    {
+        Debug.Log("IsTrue? " + firstWeapon.Equals("Handgun"));
+        if (firstWeapon.Equals("Handgun"))
         {
-            this.player = (byte)(wiimote.getCountWiimotes() - 1);
-            print("Player " + (this.player + 1) + " connected.");
+            gameObject.AddComponent<Handgun>();
+            firstGun = GetComponent<Handgun>();
+            firstGun.weaponInit(ac);
+        }
+
+        if (firstWeapon.Equals("Revolver"))
+        {
+            gameObject.AddComponent<Revolver>();
+            firstGun = GetComponent<Revolver>();
+            firstGun.weaponInit(ac);
+        }
+
+        if (secondWeapon.Equals("Shotgun"))
+        {
+            gameObject.AddComponent<Shotgun>();
+            secondGun = GetComponent<Shotgun>();
+            secondGun.enabled = false;
+        }
+
+        if (secondWeapon.Equals("SMG"))
+        {
+            gameObject.AddComponent<SMG>();
+            secondGun = GetComponent<SMG>();
+            secondGun.enabled = false;
+        }
+
+    }
+
+
+    /// <summary>
+    /// Change weapon.
+    /// </summary>
+    public void switchWeapon()
+    {
+        if (firstGun.enabled)
+        {
+            firstGun.weaponEmpty();
+            firstGun.enabled = false;
         }
         else
-            print("Controller not connected.");
+        {
+            firstGun.setReload(true);
+            anim.Play(anim_action[0]);
+            firstGun.enabled = true;
+            firstGun.weaponInit(ac);
+            weapon = firstWeapon;
+        }
+
+        if (secondGun.enabled)
+        {
+            secondGun.weaponEmpty();
+            secondGun.enabled = false;
+        }
+        else
+        {
+            secondGun.setReload(true);
+            anim.Play(anim_action[1]);
+            secondGun.enabled = true;
+            secondGun.weaponInit(ac);
+            weapon = secondWeapon;
+        }
+
+        Debug.Log("Your current weapon is a " + weapon);
     }
 
-    [DllImport("UniWii")]
-    private static extern void wiimote_start();
 
-    public void connectWiimote()
+    public override void setFirstWeapon(string weapon)
     {
-        wiimote_start();
+        this.firstWeapon = weapon;
     }
 
-    [DllImport("UniWii")]
-    private static extern int wiimote_count();
 
-    public int getCountWiimotes()
+    public override void setSecondWeapon(string weapon)
     {
-        return wiimote_count();
+        this.secondWeapon = weapon;
     }
 
-    void OnGUI()
+    /// <summary>
+    /// Get the current weapon.
+    /// </summary>
+    /// <returns>Returns a object type Weapon.</returns>
+    public override Weapon getWeapon()
+    {
+        if (secondGun.enabled)
+            return secondGun;
+
+        return firstGun;
+
+    }
+
+
+    public override void setPlayer(string player)
+    {
+        this.controller = player;
+    }
+
+
+    public string getPlayer()
+    {
+        return this.controller;
+    }
+
+    public void setPause(bool pause)
+    {
+        this.isPaused = pause;
+    }
+
+
+    private IEnumerator Delay(float delay)
     {
 
-        GUI.Label(new Rect(10, 10, 150, 25), "WiiMote controllers: " + getCountWiimotes());
-        GUI.Label(new Rect(10, 30, 150, 25), "WiiMote connected: " + wiimote.isWiimoteAvailable(1));
+        for (float time = delay; time > 0; time -= Time.deltaTime)
+        {
+            yield return 0;
+        }
 
-        /*target_box.Set(this.target_box.x, this.target_box.y, this.targetTexture.width, this.targetTexture.height);
-        GUI.DrawTexture(target_box, this.targetTexture);
-        //GUI.DrawTexture(new Rect(this.target_box.x, this.target_box.y, this.targetTexture.width, this.targetTexture.height), this.targetTexture);
-        GUI.depth = 100;*/
+        isShoot = false;
 
+    }
 
+    private IEnumerator Reload(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isReload = false;
+    }
 
+    void OnDestroy()
+    {
+        // Free all coroutines.
+        StopAllCoroutines();
     }
 
     void OnApplicationQuit()

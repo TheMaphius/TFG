@@ -78,6 +78,14 @@ public class Wiimote {
         return wiimote_enableIR(wiimote);
     }
 
+    [DllImport("UniWii")]
+    private static extern bool wiimote_isIRenabled(int which);
+
+    public bool isIREnabled(int wiimote)
+    {
+        return wiimote_isIRenabled(wiimote);
+    }
+
 
     //
     // Return boolean is wiimote has a nunchack enabled.
@@ -177,6 +185,19 @@ public class Wiimote {
         return wiimote_getButtonDown(wiimote);
     }
 
+    [DllImport("UniWii")]
+    private static extern bool wiimote_getButton1(int which);
+    public bool pressedWiimoteButton1(int wiimote)
+    {
+        return wiimote_getButton1(wiimote);
+    }
+
+    [DllImport("UniWii")]
+    private static extern bool wiimote_getButton2(int which);
+    public bool pressedWiimoteButton2(int wiimote)
+    {
+        return wiimote_getButton2(wiimote);
+    }
     //
     // Return bool if button A is pressed.
     // Parameter: Index of wiimote.

@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
     private Transform _transform;
 
     private Transform bullet;
-    private Bullet b;
+    //private Bullet b;
 
     void Start()
     {

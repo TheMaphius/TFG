@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 4172fef85e5a13c458689a7d50705cef
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: numbers_round_0
+    21300002: numbers_round_1
+    21300004: numbers_round_2
+    21300006: numbers_round_3
+    21300008: numbers_round_4
+    21300010: numbers_round_5
+    21300012: numbers_round_6
+    21300014: numbers_round_7
+    21300016: numbers_round_8
+    21300018: numbers_round_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: numbers_round_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 43
+        width: 57
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 43
+        width: 34
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 43
+        width: 51
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_3
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 43
+        width: 54
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_4
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 43
+        width: 55
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_5
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 43
+        width: 51
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_6
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 43
+        width: 55
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_7
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 43
+        width: 49
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_8
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 43
+        width: 52
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: numbers_round_9
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 43
+        width: 54
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

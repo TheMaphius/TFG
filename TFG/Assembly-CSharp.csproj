@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,25 +46,118 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Animations\Zombie\LocomotionMale\LocomotionMaleScript.cs" />
+     <Compile Include="Assets\CameraAspectRatio.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\AmbientController.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\FlyThroughController.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\Util\SetFPS.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\Util\ViewFPS.cs" />
+     <Compile Include="Assets\Meshes\Map\005339_08932_25_14\Scripts\ZRNGUIController.cs" />
+     <Compile Include="Assets\Meshes\Map\Cars\Scripts\AICarMove.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\CameraAction.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\GUIController.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\GUIControllerFlying.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\QueryAnimationController.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\QueryEmotionalController.cs" />
+     <Compile Include="Assets\Meshes\Map\PQAssets\Query-Chan\Scripts\QuerySoundController.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\HelperClasses\Set.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\HelperClasses\Utility.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\SplineClasses\Spline.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\SplineClasses\SplineColliderDraw.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\SplineClasses\SplineController.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\SplineClasses\SplineNode.cs" />
+     <Compile Include="Assets\Resources\Splines\Scripts\SplineClasses\SplineTester.cs" />
+     <Compile Include="Assets\Resources\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\AI\AI.cs" />
+     <Compile Include="Assets\Scripts\AI\Behaviour.cs" />
+     <Compile Include="Assets\Scripts\AI\BossAI.cs" />
+     <Compile Include="Assets\Scripts\AI\BossBehaviour.cs" />
+     <Compile Include="Assets\Scripts\AI\SurvivorAI.cs" />
+     <Compile Include="Assets\Scripts\AI\ZombieAI.cs" />
+     <Compile Include="Assets\Scripts\AI\ZombieBehaviour.cs" />
+     <Compile Include="Assets\Scripts\AI\ZombieDogAI.cs" />
+     <Compile Include="Assets\Scripts\AI\ZombieDogBehaviour.cs" />
+     <Compile Include="Assets\Scripts\AI\ZombieSurvivor.cs" />
+     <Compile Include="Assets\Scripts\Avatar\AvatarController.cs" />
      <Compile Include="Assets\Scripts\BuiltTest.cs" />
-     <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Bullet\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Bullet\HandgunBullet.cs" />
+     <Compile Include="Assets\Scripts\Bullet\RevolverBullet.cs" />
+     <Compile Include="Assets\Scripts\Bullet\SMGBullet.cs" />
+     <Compile Include="Assets\Scripts\Bullet\ShotgunBullet.cs" />
+     <Compile Include="Assets\Scripts\Controllers\Controller.cs" />
      <Compile Include="Assets\Scripts\Controllers\PC\MouseController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\PC\MouseMainMenu.cs" />
      <Compile Include="Assets\Scripts\Controllers\PS3\PS3.cs" />
      <Compile Include="Assets\Scripts\Controllers\PS3\PS3Controller.cs" />
+     <Compile Include="Assets\Scripts\Controllers\PS3\PS3MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Controllers\Wiimote\WiiMainMenu.cs" />
      <Compile Include="Assets\Scripts\Controllers\Wiimote\Wiimote.cs" />
      <Compile Include="Assets\Scripts\Controllers\Wiimote\WiimoteController.cs" />
+     <Compile Include="Assets\Scripts\Engine\AreaClearEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\AudioEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\CreditsEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\Engine.cs" />
+     <Compile Include="Assets\Scripts\Engine\GameEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\GameOverEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\IntroEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\LevelEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\LoadingEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\MainMenuEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\PauseEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\Player2.cs" />
+     <Compile Include="Assets\Scripts\Engine\SelectPathEngine.cs" />
+     <Compile Include="Assets\Scripts\Engine\SurvivorEngine.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Gun\HandGun.cs" />
+     <Compile Include="Assets\Scripts\Gun\Revolver.cs" />
+     <Compile Include="Assets\Scripts\Gun\SMG.cs" />
+     <Compile Include="Assets\Scripts\Gun\Shotgun.cs" />
      <Compile Include="Assets\Scripts\Gun\Weapon.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\BossLifeBar.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\Combo.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\Health.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\LifeBar.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\Points.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\Score.cs" />
+     <Compile Include="Assets\Scripts\LifeBar\Tambor.cs" />
+     <Compile Include="Assets\Scripts\Menu\Menu.cs" />
+     <Compile Include="Assets\Scripts\Menu\OptionSelection.cs" />
+     <Compile Include="Assets\Scripts\Menu\Options.cs" />
+     <Compile Include="Assets\Scripts\Menu\OptionsMenu.cs" />
+     <Compile Include="Assets\Scripts\Objects\ObjectBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Utils\AspectRatio.cs" />
+     <Compile Include="Assets\Scripts\Utils\DestroyParticles.cs" />
+     <Compile Include="Assets\Scripts\Utils\EnemyInstance.cs" />
      <Compile Include="Assets\Scripts\Utils\FPSDisplay.cs" />
-     <Compile Include="Assets\Scripts\Utils\MusicController.cs" />
+     <Compile Include="Assets\Scripts\Utils\FadeEffect.cs" />
+     <Compile Include="Assets\Scripts\Utils\LanguageGame.cs" />
+     <Compile Include="Assets\Scripts\Utils\LoopAnimation.cs" />
+     <Compile Include="Assets\Scripts\Utils\MusicAnimation.cs" />
+     <Compile Include="Assets\Scripts\Utils\NextNode.cs" />
+     <Compile Include="Assets\Scripts\Utils\ParticleDamage.cs" />
+     <Compile Include="Assets\Scripts\Utils\TextContinue.cs" />
+     <Compile Include="Assets\Scripts\Utils\ZombiAnimation.cs" />
      <Compile Include="Assets\Scripts\wiiMote.cs" />
+     <None Include="Assets\Meshes\Map\license_en.txt" />
      <None Include="Assets\Shaders\DoubleSidedTransparentCutoutBumpedSpecular.shader" />
+     <None Include="Assets\Meshes\Map\PQAssets\Query-Chan\Shaders\PQ_Skin.shader" />
+     <None Include="Assets\Resources\Elementals\!Readme.txt" />
+     <None Include="Assets\Meshes\Map\license_jp.txt" />
      <None Include="Assets\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Meshes\Map\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Meshes\Map\005339_08932_25_14\Shaders\su_Double_and_Clip.shader" />
      <None Include="Assets\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Meshes\Map\PQAssets\license_jp.txt" />
+     <None Include="Assets\Meshes\Map\PQAssets\Query-Chan\Shaders\PQ_TransBlue.shader" />
      <None Include="Assets\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Meshes\Map\005339_08932_25_14\Shaders\su_VertexCol_1UV_Single.shader" />
+     <None Include="Assets\Meshes\Map\PQAssets\license_en.txt" />
      <None Include="Assets\Shaders\HighlightShader.shader" />
+     <None Include="Assets\Meshes\Map\005339_08932_25_14\Documents\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
