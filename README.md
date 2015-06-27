@@ -22,7 +22,7 @@ Mac OS X:
 * [Zombie_Assault_WiiMote](https://mega.co.nz/#!e8hEUIqY!LEXebQmf2aIG96IH7qahJydt33jt5WYvhMODHLc4kys)
 
 
-*** The models of the game has been remove because the use is only educational. 
-If you want download: 
+*** The models of the game and some songs has been remove because the use was only educational. 
+If you want download the models: 
 * http://blog.mixamo.com/featured/zombiewinners
 * http://3drt.com/store/characters/zombie-dogs.html
